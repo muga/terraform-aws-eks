@@ -3,15 +3,15 @@ output "cluster_id" {
   value       = element(concat(aws_eks_cluster.this.*.id, list("")), 0)
 }
 
-output "cluster_arn" {
-  description = "The Amazon Resource Name (ARN) of the cluster."
-  value       = element(concat(aws_eks_cluster.this.*.arn, list("")), 0)
-}
+#output "cluster_arn" {
+#  description = "The Amazon Resource Name (ARN) of the cluster."
+#  value       = element(concat(aws_eks_cluster.this.*.arn, list("")), 0)
+#}
 
-output "cluster_certificate_authority_data" {
-  description = "Nested attribute containing certificate-authority-data for your cluster. This is the base64 encoded certificate data required to communicate with your cluster."
-  value       = element(concat(aws_eks_cluster.this[*].certificate_authority[0].data, list("")), 0)
-}
+#output "cluster_certificate_authority_data" {
+#  description = "Nested attribute containing certificate-authority-data for your cluster. This is the base64 encoded certificate data required to communicate with your cluster."
+#  value       = element(concat(aws_eks_cluster.this[*].certificate_authority[0].data, list("")), 0)
+#}
 
 output "cluster_endpoint" {
   description = "The endpoint for your EKS Kubernetes API."
@@ -28,10 +28,10 @@ output "cluster_security_group_id" {
   value       = local.cluster_security_group_id
 }
 
-output "config_map_aws_auth" {
-  description = "A kubernetes configuration to authenticate to this EKS cluster."
-  value       = kubernetes_config_map.aws_auth.*
-}
+#output "config_map_aws_auth" {
+#  description = "A kubernetes configuration to authenticate to this EKS cluster."
+#  value       = kubernetes_config_map.aws_auth.*
+#}
 
 output "cluster_iam_role_name" {
   description = "IAM role name of the EKS cluster."
@@ -58,15 +58,15 @@ output "cloudwatch_log_group_name" {
   value       = aws_cloudwatch_log_group.this[*].name
 }
 
-output "kubeconfig" {
-  description = "kubectl config file contents for this EKS cluster."
-  value       = local.kubeconfig
-}
+#output "kubeconfig" {
+#  description = "kubectl config file contents for this EKS cluster."
+#  value       = local.kubeconfig
+#}
 
-output "kubeconfig_filename" {
-  description = "The filename of the generated kubectl config."
-  value       = concat(local_file.kubeconfig.*.filename, [""])[0]
-}
+#output "kubeconfig_filename" {
+#  description = "The filename of the generated kubectl config."
+#  value       = concat(local_file.kubeconfig.*.filename, [""])[0]
+#}
 
 output "oidc_provider_arn" {
   description = "The ARN of the OIDC Provider if `enable_irsa = true`."
